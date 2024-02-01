@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ejercicio.cs" />
     <Compile Include="Marco.cs" />
     <Compile Include="Ventana.cs" />
     <Compile Include="Form1.cs">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +23,31 @@ namespace WindowsFormsApp1
             button1.Visible = false;
             label1.Visible = false;
             webBrowser1.Visible = false;
-            Matriz();
-        }                                   
+            UseList();
+        }
+        public void UseList()
+        {
+            List<int> list = new List<int>();
+            for (int i=0;i<100;i++)
+            {
+                list.Add(i);
+            }
+            var consult =from num in list
+                         where num>50 && num<90
+                         orderby num ascending
+                         select num;
+            MessageBox.Show(string.Join(",",consult));
+        }
+        private void Write() {
+            StreamWriter escribir =null;
+            try {
+                escribir = new StreamWriter("C:\\Users\\santiago\\OneDrive\\Documentos\\Job\\sophos solution\\SPacademy\\c#intermedio.nuevo.txt");
+                escribir.Write("nuevo textooooo");
+            }catch(Exception ex) {
+                MessageBox.Show(ex.ToString());
+
+            }finally { escribir.Close(); }
+        }
         private void Message()
         {
           
@@ -41,6 +65,22 @@ namespace WindowsFormsApp1
             //                );
 
 
+        }
+        public void Error()
+        {
+            try
+            {
+                int num1 = 0;
+                int num2 = 20;
+                double  div = num2/num1;
+
+            }catch(Exception ex) {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public void Insatncia() {
+            Ejercicio ejercicio = new Ejercicio("santiago", "restrepo", 10, 20);
+            MessageBox.Show($"{ejercicio.nombre} {ejercicio.apellido}, la suma es {ejercicio.suma()}");
         }
         private void Matriz()
         {
